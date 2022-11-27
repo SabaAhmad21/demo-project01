@@ -1,73 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useFormik } from 'formik';
 
-class NewEmployeeComponent extends React.Component {
+class EmployeeComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          message: ''
+        };
+      }
   render(){
-  const formik = useFormik({
-    initialValues: {
-      Id: '',
-      Name: '',
-      Location: '',
-      Salary:''
-    },
-    onSubmit: values => {
-      alert(JSON.stringify(values));
-    },
-  });
-  return (
-    <div>
-    <h2>Enter Employee Details...</h2>
-    <form onSubmit={formik.handleSubmit}>
-      <p>
-      <label htmlFor="Id">Employee ID </label>
-      <input
-        id="Id"
-        name="Id"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.Id}
-      />
-      </p>
-      
-      <p>
-      <label htmlFor="Name">Employee Name </label>
-      <input
-        id="Name"
-        name="Name"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.Name}
-      />
-      </p>
-      <p>
-      <label htmlFor="Location">Employee Location </label>
-      <input
-        id="Location"
-        name="Location"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.Location}
-      />
-      </p>
-      <p>
-      <label htmlFor="Salary">Employee Salary </label>
-      <input
-        id="Salary"
-        name="Salary"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.Salary}
-      />
-      </p>
-      <button type="submit">Submit</button>
-    </form>
-    </div>
-  );
-  }
+   
+        return(
+          <div>
+            <h2>Please Enter Employee Details...</h2>
+            <p>
+              <label>Employee ID : <input type="text"  ref="Id"></input></label>
+            </p>
+            <p>
+              <label>Employee Name : <input type="text" ref="Name"></input></label>
+            </p>
+            <p>
+              <label>Employee Location : <input type="text" ref="Location"></input></label>
+            </p>
+            <p>
+              <label>Employee Salary : <input type="text" ref="Salary"></input></label>
+            </p>
+            <br></br>
+            <button onClick={this.onCreateEmployee}>Create</button>
+                  </div>
+        )
+      }
+
+      onCreateEmployee=()=>{
+        let empInfo={
+              Id:this.refs.Id.value,
+              Name:this.refs.Name.value,
+              Location:this.refs.Location.value,
+              Salary:this.refs.Salary.value
+        
+            };
+        }
+  
 };
 
-const element=<NewEmployeeForm></NewEmployeeForm>
+const element=<EmployeeComponent></EmployeeComponent>
 
 ReactDOM.render(element,document.getElementById("root"));
 
