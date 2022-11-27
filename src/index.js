@@ -8,6 +8,15 @@ class EmployeeComponent extends React.Component {
           message: ''
         };
       }
+      onCreateEmployee=()=>{
+        let empInfo={
+              Id:this.ref.Id.value,
+              Name:this.ref.Name.value,
+              Location:this.ref.Location.value,
+              Salary:this.ref.Salary.value
+        
+            };
+        }
   render(){
    
         return(
@@ -31,15 +40,7 @@ class EmployeeComponent extends React.Component {
         )
       }
 
-      onCreateEmployee=()=>{
-        let empInfo={
-              Id:this.refs.Id.value,
-              Name:this.refs.Name.value,
-              Location:this.refs.Location.value,
-              Salary:this.refs.Salary.value
-        
-            };
-        }
+     
   
 };
 
